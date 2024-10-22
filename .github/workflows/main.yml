@@ -12,6 +12,6 @@ jobs:
       with:
         source: '.'
         exclude: './third_party ./external'
-        extensions: 'h,cpp'
+        extensions: 'h,cpp,c'
         clangFormatVersion: 18
         style: chromium
