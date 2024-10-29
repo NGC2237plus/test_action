@@ -24,6 +24,11 @@ jobs:
           git clone https://github.com/NGC2237plus/c-cpp_test.git
           cp c-cpp_test/test.py .
 
+      - name: 输出 Git 状态
+        run: |
+          git status
+          git remote -v
+
       - name: 运行测试
         run: |
           python3 test.py
