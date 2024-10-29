@@ -24,6 +24,11 @@ jobs:
           git clone https://github.com/NGC2237plus/c-cpp_test.git
           cp c-cpp_test/test.py .
 
+      - name: Set Git user
+        run: |
+          git config --global user.email "star32349@outlook.com"
+          git config --global user.name "NGC2237plus"
+      
       - name: 运行测试
         run: |
           python3 test.py
