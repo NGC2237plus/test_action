@@ -9,22 +9,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install dependencies
+      - name: 下载安装依赖
         run: |
           sudo apt-get update
           sudo apt-get install gcc python3
           pip3 install pandas
 
-      - name: Compile C code
+      - name: 编译main.c
         run: |
           gcc main.c -o main.out
 
-      - name: Download test.py from specified repository
+      - name: 下载py测试脚本
         run: |
           git clone https://github.com/NGC2237plus/c-cpp_test.git
           cp c-cpp_test/test.py .
 
-      - name: Run test.py to measure time 和 memory
+      - name: 运行测试
         run: |
           python3 test.py
 
