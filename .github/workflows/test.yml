@@ -1,6 +1,11 @@
 name: 评测
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - main.c  # 仅在 main.c 被修改时触发
 
 jobs:
   build-and-test:
