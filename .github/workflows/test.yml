@@ -13,6 +13,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install gcc python3
+          pip3 install pandas
 
       - name: Compile C code
         run: |
