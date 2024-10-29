@@ -30,6 +30,8 @@ jobs:
           git config --global user.name "NGC2237plus"
       
       - name: 运行测试
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }} 
         run: |
           python3 test.py
 
