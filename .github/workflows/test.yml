@@ -1,0 +1,29 @@
+name: Compile and Test
+
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install gcc python3
+
+      - name: Compile C code
+        run: |
+          gcc main.c -o main.out
+
+      - name: Download test.py from specified repository
+        run: |
+          git clone https://github.com/username/specified-repo.git
+          cp specified-repo/test.py .
+
+      - name: Run test.py to measure time and memory
+        run: |
+          python3 test.py
+
