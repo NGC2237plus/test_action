@@ -1,4 +1,4 @@
-name: Compile 和 Test
+name: 评测
 
 on: [push]
 
@@ -6,10 +6,10 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: 检出仓库
         uses: actions/checkout@v2
 
-      - name: 下载安装依赖
+      - name: 安装依赖
         run: |
           sudo apt-get update
           sudo apt-get install gcc python3
@@ -21,14 +21,9 @@ jobs:
 
       - name: 下载py测试脚本
         run: |
-          git clone https://github.com/NGC2237plus/c-cpp_test.git
+          git clone https://${{ secrets.GIT_TOKEN }}@github.com/NGC2237plus/c-cpp_test.git
           cp c-cpp_test/test.py .
 
-      - name: Set Git user
-        run: |
-          git config --global user.email "star32349@outlook.com"
-          git config --global user.name "NGC2237plus"
-      
       - name: 运行测试
         env:
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }} 
