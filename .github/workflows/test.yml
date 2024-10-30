@@ -10,6 +10,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      GIT_TOKEN: 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
     steps:
       - name: 检出仓库
         uses: actions/checkout@v2
@@ -20,13 +22,9 @@ jobs:
           sudo apt-get install gcc python3
           pip3 install pandas
 
-      - name: 编译main.c
-        run: |
-          gcc main.c -o main.out
-
       - name: 下载py测试脚本
         run: |
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/NGC2237plus/c-cpp_test.git
+          git clone https://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@github.com/Firefly-fly/c-cpp_test.git
           cp c-cpp_test/test.py .
 
       - name: 运行测试
