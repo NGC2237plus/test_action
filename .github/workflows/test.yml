@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     steps:
       - name: 检出仓库
         uses: actions/checkout@v2
@@ -26,12 +26,9 @@ jobs:
 
       - name: 下载py测试脚本
         run: |
-          git clone https://${{ secrets.GIT_TOKEN }}@github.com/NGC2237plus/c-cpp_test.git
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/NGC2237plus/c-cpp_test.git
           cp c-cpp_test/test.py .
 
       - name: 运行测试
-        env:
-          GIT_TOKEN: ${{ secrets.GIT_TOKEN }} 
         run: |
           python3 test.py
-
